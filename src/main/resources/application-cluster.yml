@@ -9,4 +9,6 @@ eureka:
       defaultZone: http://192.168.80.129:8761/eureka/,http://192.168.80.129:8769/eureka/
   instance:
     lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    lease-expiration-duration-in-seconds: 30    
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
