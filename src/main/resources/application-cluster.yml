@@ -8,7 +8,11 @@ eureka:
     service-url:
       defaultZone: http://192.168.80.129:8761/eureka/,http://192.168.80.129:8769/eureka/
   instance:
+    #eureka.client.registry-fetch-interval-seconds
+    #表示eureka client间隔多久去拉取服务注册信息，默认为30秒，对于api-gateway，如果要迅速获取服务注册状态，可以缩小该值，比如5秒
+    # 心跳时间，即服务续约间隔时间（缺省为30s）
     lease-renewal-interval-in-seconds: 10
+    # 发呆时间，即服务续约到期时间（缺省为90s）服务器以这个时间作为判断节点是否有效的重要依据
     lease-expiration-duration-in-seconds: 30    
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
